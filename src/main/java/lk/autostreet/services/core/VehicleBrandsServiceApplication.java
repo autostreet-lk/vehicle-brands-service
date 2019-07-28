@@ -1,4 +1,4 @@
-package lk.autostreet.services.vehiclebrandsservice;
+package lk.autostreet.services.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,5 +9,4 @@ public class VehicleBrandsServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(VehicleBrandsServiceApplication.class, args);
 	}
-
 }
