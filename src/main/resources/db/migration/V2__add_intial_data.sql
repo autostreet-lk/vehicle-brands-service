@@ -1,4 +1,4 @@
-insert into hibernate_sequence(next_val) values(1);
+insert into hibernate_sequence(next_val) values(10);
 
 insert into vehicle_brands(id,name) values(1,'Toyota');
 insert into vehicle_brands(id,name) values(2,'Nissan');

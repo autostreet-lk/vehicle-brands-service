@@ -7,12 +7,9 @@ import java.util.List;
 
 public interface VehicleBrandService extends BaseCrudService<VehicleBrand, Long> {
 
-//    VehicleBrand create(VehicleBrand vehicleBrand) throws VehicleBrandAlreadyExistsException, VehicleBrandNotCreatedException;
+    List<VehicleBrand> getAllBrands() throws NotFoundException;
 
-    List<VehicleBrand> getAllBrands() throws VehicleBrandNotFoundException;
+    VehicleBrand getBrandById(Long id) throws NotFoundException;
 
-    VehicleBrand getBrandById(Long id) throws VehicleBrandNotFoundException;
-
-    VehicleBrand update(VehicleBrand vehicleBrand)
-            throws VehicleBrandNotFoundException, VehicleBrandNotUpdatedException;
+    VehicleBrand update(VehicleBrand vehicleBrand) throws NotUpdatedException;
 }

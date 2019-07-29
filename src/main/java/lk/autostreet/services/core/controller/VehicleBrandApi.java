@@ -19,20 +19,19 @@ import static lk.autostreet.services.core.config.AccessRole.ROLE_ADMIN;
 public interface VehicleBrandApi {
 
     @GetMapping(value = "/brands", headers = "X-Api-Version=" + VERSION)
-    VehicleBrandsListResponse getAllVehicleBrands() throws VehicleBrandNotFoundException;
+    VehicleBrandsListResponse getAllVehicleBrands() throws VehicleBrandGenericException;
 
     @PostMapping(value = "/brands", headers = "X-Api-Version=" + VERSION)
     @ResponseStatus(HttpStatus.CREATED)
     @RolesAllowed({ROLE_ADMIN})
-    AddNewVehicleBrandResponse addVehicleBrand(@Validated @RequestBody AddNewVehicleBrandRequest requestBody, BindingResult bindingResult)
-            throws NotCreatedException, AlreadyExistsException, VehicleBrandGenericException;
-
+    AddNewVehicleBrandResponse addVehicleBrand(@Validated @RequestBody AddNewVehicleBrandRequest requestBody,
+                                               BindingResult bindingResult) throws VehicleBrandGenericException;
 
     @PutMapping(value = "/brands/{brand-id}", headers = "X-Api-Version=" + VERSION)
     @RolesAllowed({ROLE_ADMIN})
     void updateVehicleBrand(@PathVariable("brand-id") Long brandId,
-                            @Validated @RequestBody VehicleBrandUpdateRequest requestBody, BindingResult bindingResult)
-            throws VehicleBrandNotUpdatedException, VehicleBrandNotFoundException;
+                            @Validated @RequestBody VehicleBrandUpdateRequest requestBody,
+                            BindingResult bindingResult) throws VehicleBrandGenericException;
 
     @DeleteMapping(value = "/brands/{brand-id}", headers = "X-Api-Version=" + VERSION)
     @RolesAllowed({ROLE_ADMIN})

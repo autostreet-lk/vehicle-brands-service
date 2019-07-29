@@ -36,7 +36,7 @@ public class VehicleBrandController implements VehicleBrandApi {
     }
 
     @GetMapping(value = "/brands", headers = "X-Api-Version=" + VERSION)
-    public VehicleBrandsListResponse getAllVehicleBrands() throws VehicleBrandNotFoundException {
+    public VehicleBrandsListResponse getAllVehicleBrands() throws VehicleBrandGenericException {
         log.info("request to get all vehicle brands");
         List<VehicleBrand> vehicleManufacturers = brandService.getAllBrands();
 
@@ -49,15 +49,14 @@ public class VehicleBrandController implements VehicleBrandApi {
     @ResponseStatus(HttpStatus.CREATED)
     @RolesAllowed({ROLE_ADMIN})
     public AddNewVehicleBrandResponse addVehicleBrand(@Validated @RequestBody AddNewVehicleBrandRequest requestBody,
-                                                      BindingResult bindingResult)
-            throws NotCreatedException, AlreadyExistsException, VehicleBrandGenericException {
+                                                      BindingResult bindingResult) throws VehicleBrandGenericException {
 
         log.debug("request to create new vehicle brand [{}] ", requestBody.toString());
 
         if (bindingResult.hasErrors()) {
             String message = bindingResult.getAllErrors().get(0).getDefaultMessage();
             log.error("request body validation failed for creating new vehicle brand [{}]", message);
-            throw new VehicleBrandNotCreatedException(message);
+            throw new BadRequestException(message);
         }
 
         AddNewBrandTransformer transformer = new AddNewBrandTransformer();
@@ -72,13 +71,12 @@ public class VehicleBrandController implements VehicleBrandApi {
     @PutMapping(value = "/brands/{brand-id}", headers = "X-Api-Version=" + VERSION)
     @RolesAllowed({ROLE_ADMIN})
     public void updateVehicleBrand(@PathVariable("brand-id") Long brandId,
-                                   @Validated @RequestBody VehicleBrandUpdateRequest requestBody, BindingResult bindingResult)
-            throws VehicleBrandNotUpdatedException, VehicleBrandNotFoundException {
-
+                                   @Validated @RequestBody VehicleBrandUpdateRequest requestBody,
+                                   BindingResult bindingResult) throws VehicleBrandGenericException {
         if (bindingResult.hasErrors()) {
             String message = bindingResult.getAllErrors().get(0).getDefaultMessage();
             log.error("request body validation failed for updating vehicle brand with id [{}] ; error [{}]", brandId, message);
-            throw new VehicleBrandNotUpdatedException(message);
+            throw new BadRequestException(message);
         }
 
         VehicleBrandUpdateRequestTransformer transformer = new VehicleBrandUpdateRequestTransformer();
