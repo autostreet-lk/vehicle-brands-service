@@ -1,4 +1,4 @@
-package lk.autostreet.services.core.model.dto.response;
+package lk.autostreet.services.core.model.dto.response.brands;
 
 import lombok.Builder;
 import lombok.Data;

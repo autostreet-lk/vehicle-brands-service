@@ -1,8 +1,9 @@
-package lk.autostreet.services.core.service;
+package lk.autostreet.services.core.service.impl;
 
 import lk.autostreet.services.core.exception.*;
 import lk.autostreet.services.core.model.VehicleBrand;
 import lk.autostreet.services.core.repository.VehicleBrandRepository;
+import lk.autostreet.services.core.service.VehicleBrandService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

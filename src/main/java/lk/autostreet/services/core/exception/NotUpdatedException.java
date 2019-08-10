@@ -1,6 +1,6 @@
 package lk.autostreet.services.core.exception;
 
-public class NotUpdatedException extends VehicleBrandGenericException {
+public class NotUpdatedException extends AppGenericException {
 
     public NotUpdatedException() {
     }

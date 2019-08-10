@@ -1,5 +1,6 @@
-package lk.autostreet.services.core.model.dto.request;
+package lk.autostreet.services.core.model.dto.request.brands;
 
+import lk.autostreet.services.core.model.dto.request.RequestBody;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;

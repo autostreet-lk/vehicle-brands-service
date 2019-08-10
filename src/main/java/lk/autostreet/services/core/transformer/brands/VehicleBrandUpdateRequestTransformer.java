@@ -1,7 +1,7 @@
 package lk.autostreet.services.core.transformer.brands;
 
 import lk.autostreet.services.core.model.VehicleBrand;
-import lk.autostreet.services.core.model.dto.request.VehicleBrandUpdateRequest;
+import lk.autostreet.services.core.model.dto.request.brands.VehicleBrandUpdateRequest;
 import lk.autostreet.services.core.transformer.RequestTransformer;
 
 public class VehicleBrandUpdateRequestTransformer implements RequestTransformer<VehicleBrand, VehicleBrandUpdateRequest> {

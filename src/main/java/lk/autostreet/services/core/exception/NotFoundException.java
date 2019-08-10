@@ -1,6 +1,6 @@
 package lk.autostreet.services.core.exception;
 
-public class NotFoundException extends VehicleBrandGenericException {
+public class NotFoundException extends AppGenericException {
 
     public NotFoundException() {
     }

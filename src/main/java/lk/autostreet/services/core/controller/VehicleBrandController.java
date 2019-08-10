@@ -1,11 +1,12 @@
 package lk.autostreet.services.core.controller;
 
+import lk.autostreet.services.core.controller.api.VehicleBrandApi;
 import lk.autostreet.services.core.exception.*;
 import lk.autostreet.services.core.model.VehicleBrand;
-import lk.autostreet.services.core.model.dto.request.AddNewVehicleBrandRequest;
-import lk.autostreet.services.core.model.dto.request.VehicleBrandUpdateRequest;
-import lk.autostreet.services.core.model.dto.response.AddNewVehicleBrandResponse;
-import lk.autostreet.services.core.model.dto.response.VehicleBrandsListResponse;
+import lk.autostreet.services.core.model.dto.request.brands.AddNewVehicleBrandRequest;
+import lk.autostreet.services.core.model.dto.request.brands.VehicleBrandUpdateRequest;
+import lk.autostreet.services.core.model.dto.response.brands.AddNewVehicleBrandResponse;
+import lk.autostreet.services.core.model.dto.response.brands.VehicleBrandsListResponse;
 import lk.autostreet.services.core.service.VehicleBrandService;
 import lk.autostreet.services.core.transformer.brands.AddNewBrandTransformer;
 import lk.autostreet.services.core.transformer.brands.VehicleBrandListResponseTransformer;
@@ -36,7 +37,7 @@ public class VehicleBrandController implements VehicleBrandApi {
     }
 
     @GetMapping(value = "/brands", headers = "X-Api-Version=" + VERSION)
-    public VehicleBrandsListResponse getAllVehicleBrands() throws VehicleBrandGenericException {
+    public VehicleBrandsListResponse getAllVehicleBrands() throws AppGenericException {
         log.info("request to get all vehicle brands");
         List<VehicleBrand> vehicleManufacturers = brandService.getAllBrands();
 
@@ -49,7 +50,7 @@ public class VehicleBrandController implements VehicleBrandApi {
     @ResponseStatus(HttpStatus.CREATED)
     @RolesAllowed({ROLE_ADMIN})
     public AddNewVehicleBrandResponse addVehicleBrand(@Validated @RequestBody AddNewVehicleBrandRequest requestBody,
-                                                      BindingResult bindingResult) throws VehicleBrandGenericException {
+                                                      BindingResult bindingResult) throws AppGenericException {
 
         log.debug("request to create new vehicle brand [{}] ", requestBody.toString());
 
@@ -72,7 +73,7 @@ public class VehicleBrandController implements VehicleBrandApi {
     @RolesAllowed({ROLE_ADMIN})
     public void updateVehicleBrand(@PathVariable("brand-id") Long brandId,
                                    @Validated @RequestBody VehicleBrandUpdateRequest requestBody,
-                                   BindingResult bindingResult) throws VehicleBrandGenericException {
+                                   BindingResult bindingResult) throws AppGenericException {
         if (bindingResult.hasErrors()) {
             String message = bindingResult.getAllErrors().get(0).getDefaultMessage();
             log.error("request body validation failed for updating vehicle brand with id [{}] ; error [{}]", brandId, message);

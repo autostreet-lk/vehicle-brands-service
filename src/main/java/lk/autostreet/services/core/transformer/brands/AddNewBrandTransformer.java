@@ -2,8 +2,8 @@ package lk.autostreet.services.core.transformer.brands;
 
 import lk.autostreet.services.core.exception.TransformException;
 import lk.autostreet.services.core.model.VehicleBrand;
-import lk.autostreet.services.core.model.dto.request.AddNewVehicleBrandRequest;
-import lk.autostreet.services.core.model.dto.response.AddNewVehicleBrandResponse;
+import lk.autostreet.services.core.model.dto.request.brands.AddNewVehicleBrandRequest;
+import lk.autostreet.services.core.model.dto.response.brands.AddNewVehicleBrandResponse;
 import lk.autostreet.services.core.transformer.Transformer;
 
 public class AddNewBrandTransformer implements Transformer<VehicleBrand, AddNewVehicleBrandRequest, AddNewVehicleBrandResponse> {

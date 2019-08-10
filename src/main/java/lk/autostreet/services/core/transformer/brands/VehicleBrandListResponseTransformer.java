@@ -2,8 +2,8 @@ package lk.autostreet.services.core.transformer.brands;
 
 import lk.autostreet.services.core.exception.TransformException;
 import lk.autostreet.services.core.model.VehicleBrand;
-import lk.autostreet.services.core.model.dto.response.VehicleBrandDetails;
-import lk.autostreet.services.core.model.dto.response.VehicleBrandsListResponse;
+import lk.autostreet.services.core.model.dto.response.brands.VehicleBrandDetails;
+import lk.autostreet.services.core.model.dto.response.brands.VehicleBrandsListResponse;
 import lk.autostreet.services.core.transformer.ResponseListTransformer;
 
 import java.util.List;

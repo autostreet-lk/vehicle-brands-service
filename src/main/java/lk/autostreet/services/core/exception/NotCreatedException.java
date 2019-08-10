@@ -1,6 +1,6 @@
 package lk.autostreet.services.core.exception;
 
-public class NotCreatedException extends VehicleBrandGenericException {
+public class NotCreatedException extends AppGenericException {
 
     public NotCreatedException() {
     }

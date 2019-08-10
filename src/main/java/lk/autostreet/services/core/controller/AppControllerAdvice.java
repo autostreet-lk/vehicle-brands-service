@@ -3,7 +3,6 @@ package lk.autostreet.services.core.controller;
 import lk.autostreet.services.core.exception.AlreadyRegisteredException;
 import lk.autostreet.services.core.exception.BadRequestException;
 import lk.autostreet.services.core.exception.TransformException;
-import lk.autostreet.services.core.exception.VehicleBrandGenericException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
