@@ -24,7 +24,7 @@ public class VehicleBrandServiceImpl implements VehicleBrandService {
     }
 
     @Override
-    public VehicleBrand create(VehicleBrand vehicleManufacturer) throws NotCreatedException,AlreadyRegisteredException {
+    public VehicleBrand create(VehicleBrand vehicleManufacturer) throws NotCreatedException, AlreadyRegisteredException {
         if (vehicleManufacturer == null || vehicleManufacturer.getName() == null) {
             log.error("vehicle brand details are not set");
             throw new NotCreatedException("vehicle brand details are not set");
@@ -34,13 +34,7 @@ public class VehicleBrandServiceImpl implements VehicleBrandService {
             log.error("vehicle brand [{}] is already registered", vehicleManufacturer.getName());
             throw new AlreadyRegisteredException("vehicle brand [" + vehicleManufacturer.getName() + "] is already registered");
         }
-
-//        try {
-            return vehicleBrandRepository.save(vehicleManufacturer);
-//        } catch (Exception ex) {
-//            log.error(" error occurred while creating the vehicle brand [{}] ", ex.getMessage());
-//            throw new NotCreatedException(ex.getMessage());
-//        }
+        return vehicleBrandRepository.save(vehicleManufacturer);
     }
 
     @Override
@@ -104,14 +98,7 @@ public class VehicleBrandServiceImpl implements VehicleBrandService {
                 && !vehicleManufacturerOptional2.get().getId().equals(vehicleManufacturer.getId())) {
             throw new NotUpdatedException("name [" + vehicleManufacturer.getName() + "] already registered for another vehicle brand");
         }
-
         manufacturer.setName(vehicleManufacturer.getName());
-
-//        try {
         return vehicleBrandRepository.save(manufacturer);
-//        } catch (Exception ex) {
-//            log.error("error occurred while updating the vehicle brand [{}] details [{}]", vehicleManufacturer.getId(), ex.getMessage());
-//            throw new VehicleBrandNotUpdatedException(ex.getMessage());
-//        }
     }
 }
